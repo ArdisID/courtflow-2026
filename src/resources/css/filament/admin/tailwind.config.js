@@ -1,32 +1,29 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
-const defaultTheme = require("tailwindcss/defaultTheme");
-import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
 
-function withOpacityValue(variable) {
-    return ({ opacityValue }) => {
-        if (opacityValue === undefined) {
-            return `rgb(var(${variable}))`;
-        }
-        return `rgb(var(${variable}) / ${opacityValue})`;
-    };
-}
+import preset from "../../../../vendor/filament/filament/tailwind.config.preset";
 
 export default {
+    presets: [preset],
+
     content: [
+        "./app/**/*.php",
         "./resources/**/*.blade.php",
-        "./app/Filament/**/*.php",
-        "./resources/views/filament/**/*.blade.php",
+        "./resources/**/*.js",
+
         "./vendor/filament/**/*.blade.php",
         "./vendor/awcodes/overlook/resources/**/*.blade.php",
         "./vendor/andrewdwallo/filament-selectify/resources/views/**/*.blade.php",
-        "<./vendor/awcodes/filament-tiptap-editor/resources/**/*.blade.php",
         "./vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php",
     ],
+
     darkMode: "class",
-    presets: [preset],
+
+    theme: {
+        extend: {},
+    },
+
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
     ],
-}
+};
